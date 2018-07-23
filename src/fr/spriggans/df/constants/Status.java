@@ -1,5 +1,7 @@
 package fr.spriggans.df.constants;
 
+import fr.spriggans.util.ArgumentsUtil;
+
 public enum Status {
 
 	PEASANT("Peasant", 72, 35),
@@ -30,5 +32,16 @@ public enum Status {
 
 	public int getSkillPoints() {
 		return skillPoints;
+	}
+	
+	public static Status getStatusByString(String s) {
+		if(ArgumentsUtil.OPT_S_VAL_P.equals(s)) {
+			return PEASANT;
+		} else if(ArgumentsUtil.OPT_S_VAL_H.equals(s)) {
+			return HERO;
+		} else if(ArgumentsUtil.OPT_S_VAL_G.equals(s)) {
+			return DEMI_GOD;
+		}
+		return CHEATER;
 	}
 }

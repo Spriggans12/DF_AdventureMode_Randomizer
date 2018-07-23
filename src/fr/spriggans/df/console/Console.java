@@ -1,4 +1,4 @@
-package fr.spriggans.console;
+package fr.spriggans.df.console;
 
 public class Console {
 
@@ -25,35 +25,58 @@ public class Console {
 	public static final String CYAN_BRIGHT = "\033[0;96m"; // CYAN
 	public static final String WHITE_BRIGHT = "\033[0;97m"; // WHITE
 
-	public static void printRed(Object o) {
+	private final boolean colorful;
+
+	private Console(ConsoleBuilder builder) {
+		this.colorful = builder.colorful;
+	}
+
+	public void printRed(Object o) {
 		printColor(o, RED_BRIGHT);
 	}
 
-	public static void printlnRed(Object o) {
+	public void printlnRed(Object o) {
 		printlnColor(o, RED_BRIGHT);
 	}
 
-	public static void printLime(Object o) {
+	public void printLime(Object o) {
 		printColor(o, GREEN_BRIGHT);
 	}
 
-	public static void printlnLime(Object o) {
+	public void printlnLime(Object o) {
 		printlnColor(o, GREEN_BRIGHT);
 	}
 
-	public static void print(Object o) {
+	public void print(Object o) {
 		printColor(o, WHITE);
 	}
 
-	public static void println(Object o) {
+	public void println(Object o) {
 		printlnColor(o, WHITE);
 	}
 
-	public static void printColor(Object o, String color) {
-		System.out.print(color + o + RESET);
+	public void printColor(Object o, String color) {
+		if (colorful) {
+			System.out.print(color + o + RESET);
+		} else {
+			System.out.print(o);
+		}
 	}
 
-	public static void printlnColor(Object o, String color) {
+	public void printlnColor(Object o, String color) {
 		printColor(o + "\n", color);
+	}
+
+	public static class ConsoleBuilder {
+		private boolean colorful;
+
+		public ConsoleBuilder colorful(boolean colorful) {
+			this.colorful = colorful;
+			return this;
+		}
+
+		public Console build() {
+			return new Console(this);
+		}
 	}
 }

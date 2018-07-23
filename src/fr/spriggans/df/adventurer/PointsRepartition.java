@@ -1,4 +1,4 @@
-package fr.spriggans.df;
+package fr.spriggans.df.adventurer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,15 +8,23 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import fr.spriggans.console.Console;
+import fr.spriggans.df.console.Console;
 import fr.spriggans.df.constants.AttributeLevels;
 import fr.spriggans.df.constants.Attributes;
 import fr.spriggans.df.constants.SkillLevels;
 import fr.spriggans.df.constants.Skills;
 import fr.spriggans.df.constants.Status;
 
-public class Configuration {
+/**
+ * Adventurer's repartition of skills / attributes.
+ */
+public class PointsRepartition {
 
+	/**
+	 * Used for display.
+	 */
+	private Console console;
+	
 	/**
 	 * Amount of + pressed for said attribute.
 	 */
@@ -31,7 +39,8 @@ public class Configuration {
 
 	private int remainingSkillPoints;
 
-	public Configuration(Status status) {
+	public PointsRepartition(Status status, Console console) {
+		this.console = console;
 		this.attributesRepartition = initAttrs();
 		this.skillsRepartition = initSkills();
 		this.remainingAttributePoints = status.getAttributePoints();
@@ -119,22 +128,22 @@ public class Configuration {
 	}
 
 	public void show(boolean showAll) {
-		Console.println("Attributes :");
+		this.console.println("Attributes :");
 		attributesRepartition.forEach((skill, level) -> {
 			if (showAll || !level.equals(AttributeLevels.A_0))
-				Console.printlnColor(level + "" + skill, level.getColor());
+				this.console.printlnColor(level + "" + skill, level.getColor());
 		});
 
-		Console.println("\nSkills :");
+		this.console.println("\nSkills :");
 		skillsRepartition.forEach((attr, level) -> {
 			if (showAll || !level.equals(SkillLevels.S_0)) {
-				Console.printlnColor(level + "" + attr, level.getColor());
+				this.console.printlnColor(level + "" + attr, level.getColor());
 			}
 		});
 
-		Console.println("\nRemaining points :");
-		Console.println(this.remainingAttributePoints + " for attributes.");
-		Console.println(this.remainingSkillPoints + " for skills.");
+		this.console.println("\nRemaining points :");
+		this.console.println(this.remainingAttributePoints + " for attributes.");
+		this.console.println(this.remainingSkillPoints + " for skills.");
 
 	}
 }

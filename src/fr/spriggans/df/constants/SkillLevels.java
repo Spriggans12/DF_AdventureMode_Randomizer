@@ -1,6 +1,6 @@
 package fr.spriggans.df.constants;
 
-import fr.spriggans.console.Console;
+import fr.spriggans.df.console.Console;
 
 public enum SkillLevels {
 
