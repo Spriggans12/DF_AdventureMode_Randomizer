@@ -21,7 +21,7 @@ You need Java 1.8 installed.
 
 ### Steps
 
-Download a copy of the Main.jar in the [Release](/releases/latest) screen.
+Download a copy of the Main.jar file in the [Release](https://github.com/Spriggans12/DF_AdventureMode_Randomizer/releases/latest) screen.
 Put that jar in a location on your computer.
 
 Open a command line console, and navigate to the previous location
@@ -46,7 +46,7 @@ It will not work if your console does not support ANSI coding.
 *EG. : Windows' cmd does not support it, but gitbash does.*
 
 * -s <value> : Choose the status of your adventurer.
-Value can be either of 'p' (Peasant), 'h' (Hero) or 'g' (Semigod).
+Value can be either 'p' (Peasant), 'h' (Hero) or 'g' (Semigod). Default value is 'p'
 
 
 ### Examples
@@ -76,11 +76,11 @@ sh makeJar.sh
 ```
 *For Windows users, you have to run *makeJar.bat* instead.*
 
-This will create a file, named Main.jar, similar to the one provided under [Releases](/releases/latest).
+This will create a file, named Main.jar, similar to the one provided under [Releases](https://github.com/Spriggans12/DF_AdventureMode_Randomizer/releases/latest).
 
 ## License
 
-This project is licensed under the Do What The F*ck You Want To Public License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Do What The F*ck You Want To Public License - see the [LICENSE.md](LICENSE.md) file for details, but yeah, it means I don't care who uses this or how.
 
 ## Acknowledgments
 
