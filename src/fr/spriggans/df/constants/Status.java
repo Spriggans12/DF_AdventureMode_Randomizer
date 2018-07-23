@@ -34,7 +34,7 @@ public enum Status {
 		return skillPoints;
 	}
 	
-	public static Status getStatusByString(String s) {
+	public static Status getByString(String s) {
 		if(ArgumentsUtil.OPT_S_VAL_P.equals(s)) {
 			return PEASANT;
 		} else if(ArgumentsUtil.OPT_S_VAL_H.equals(s)) {

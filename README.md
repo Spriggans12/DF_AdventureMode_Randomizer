@@ -48,6 +48,11 @@ It will not work if your console does not support ANSI coding.
 * -s <value> : Choose the status of your adventurer.
 Value can be either 'p' (Peasant), 'h' (Hero) or 'g' (Semigod). Default value is 'p'
 
+* -sex <value> : Choose the sex of your adventurer. Can be 'f' or 'm'. Defaults to a random value.
+
+* -race <value> : Choose the race of your adventurer. Can be 'human', 'dwarf', 'elf' or 'goblin'. Defaults to a random value.
+
+* -seed <value> : You can set the random generation seed with this parameter. It doesn't have much point. But here it is. Defaults to a random value.
 
 ### Examples
 
@@ -61,6 +66,10 @@ java -jar Main.jar -c
 ```
 Runs the randomizer with a Peasant (default), and with ANSI coloration.
 
+```
+java -jar Main.jar -sex f -race elf
+```
+Runs the randomizer with a Peasant Female Elf.
 
 ## Compiling the program yourself
 

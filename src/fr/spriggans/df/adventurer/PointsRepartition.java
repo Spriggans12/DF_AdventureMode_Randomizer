@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Random;
 
 import fr.spriggans.df.console.Console;
 import fr.spriggans.df.constants.AttributeLevels;
@@ -14,6 +13,7 @@ import fr.spriggans.df.constants.Attributes;
 import fr.spriggans.df.constants.SkillLevels;
 import fr.spriggans.df.constants.Skills;
 import fr.spriggans.df.constants.Status;
+import fr.spriggans.util.RandomUtil;
 
 /**
  * Adventurer's repartition of skills / attributes.
@@ -58,18 +58,17 @@ public class PointsRepartition {
 	}
 
 	public void randomize() {
-		Random r = new Random();
-		randomizeAttributes(r);
-		randomizeSkills(r);
+		randomizeAttributes();
+		randomizeSkills();
 	}
 
-	private void randomizeAttributes(Random r) {
+	private void randomizeAttributes() {
 		// List of upgrades we can afford.
 		List<Attributes> affordableList = Arrays.asList(Attributes.VALS);
 
 		// Loop until no more upgrades possible
 		while (!affordableList.isEmpty()) {
-			int random = r.nextInt(affordableList.size());
+			int random = RandomUtil.R.nextInt(affordableList.size());
 			Attributes attrToIncrement = affordableList.get(random);
 			AttributeLevels currentLevel = this.attributesRepartition.get(attrToIncrement);
 			int upgradeCost = currentLevel.getCostOfNextLevel();
@@ -92,13 +91,13 @@ public class PointsRepartition {
 		return res;
 	}
 
-	private void randomizeSkills(Random r) {
+	private void randomizeSkills() {
 		// List of upgrades we can afford.
 		List<Skills> affordableList = Arrays.asList(Skills.VALS);
 
 		// Loop until no more upgrades possible
 		while (!affordableList.isEmpty()) {
-			int random = r.nextInt(affordableList.size());
+			int random = RandomUtil.R.nextInt(affordableList.size());
 			Skills skillToIncrement = affordableList.get(random);
 			SkillLevels currentLevel = this.skillsRepartition.get(skillToIncrement);
 			int upgradeCost = currentLevel.getCostOfNextLevel();
