@@ -21,11 +21,6 @@ import fr.spriggans.df.constants.Status;
 public class PointsRepartition {
 
 	/**
-	 * Used for display.
-	 */
-	private Console console;
-	
-	/**
 	 * Amount of + pressed for said attribute.
 	 */
 	Map<Attributes, AttributeLevels> attributesRepartition;
@@ -39,8 +34,7 @@ public class PointsRepartition {
 
 	private int remainingSkillPoints;
 
-	public PointsRepartition(Status status, Console console) {
-		this.console = console;
+	public PointsRepartition(Status status) {
 		this.attributesRepartition = initAttrs();
 		this.skillsRepartition = initSkills();
 		this.remainingAttributePoints = status.getAttributePoints();
@@ -128,22 +122,22 @@ public class PointsRepartition {
 	}
 
 	public void show(boolean showAll) {
-		this.console.println("Attributes :");
+		Console.println("Attributes :");
 		attributesRepartition.forEach((skill, level) -> {
 			if (showAll || !level.equals(AttributeLevels.A_0))
-				this.console.printlnColor(level + "" + skill, level.getColor());
+				Console.printlnColor(level + "" + skill, level.getColor());
 		});
 
-		this.console.println("\nSkills :");
+		Console.println("\nSkills :");
 		skillsRepartition.forEach((attr, level) -> {
 			if (showAll || !level.equals(SkillLevels.S_0)) {
-				this.console.printlnColor(level + "" + attr, level.getColor());
+				Console.printlnColor(level + "" + attr, level.getColor());
 			}
 		});
 
-		this.console.println("\nRemaining points :");
-		this.console.println(this.remainingAttributePoints + " for attributes.");
-		this.console.println(this.remainingSkillPoints + " for skills.");
+		Console.println("\nRemaining points :");
+		Console.println(this.remainingAttributePoints + " for attributes.");
+		Console.println(this.remainingSkillPoints + " for skills.");
 
 	}
 }

@@ -7,7 +7,6 @@ import fr.spriggans.df.ProgramOptions.ProgramOptionsBuilder;
 import fr.spriggans.df.adventurer.Adventurer;
 import fr.spriggans.df.adventurer.Adventurer.AdventurerBuilder;
 import fr.spriggans.df.console.Console;
-import fr.spriggans.df.console.Console.ConsoleBuilder;
 import fr.spriggans.util.ArgumentsUtil;
 
 public class RandomizeAdventurerPoints {
@@ -19,8 +18,10 @@ public class RandomizeAdventurerPoints {
 		}
 
 		ProgramOptions options = new ProgramOptionsBuilder().withParams(params).build();
-		Console console = new ConsoleBuilder().colorful(options.isColorful()).build();
-		Adventurer adventurer = new AdventurerBuilder().withOptions(options).withConsole(console).build();
+		if(options.isColorful()) {
+			Console.makeColorful();
+		}
+		Adventurer adventurer = new AdventurerBuilder().withOptions(options).build();
 		adventurer.randomize();
 		adventurer.show();
 	}

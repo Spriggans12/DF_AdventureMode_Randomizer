@@ -25,58 +25,45 @@ public class Console {
 	public static final String CYAN_BRIGHT = "\033[0;96m"; // CYAN
 	public static final String WHITE_BRIGHT = "\033[0;97m"; // WHITE
 
-	private final boolean colorful;
+	private static boolean COLORFUL = false;
 
-	private Console(ConsoleBuilder builder) {
-		this.colorful = builder.colorful;
+	public static void makeColorful() {
+		COLORFUL = true;
 	}
 
-	public void printRed(Object o) {
+	public static void printRed(Object o) {
 		printColor(o, RED_BRIGHT);
 	}
 
-	public void printlnRed(Object o) {
+	public static void printlnRed(Object o) {
 		printlnColor(o, RED_BRIGHT);
 	}
 
-	public void printLime(Object o) {
+	public static void printLime(Object o) {
 		printColor(o, GREEN_BRIGHT);
 	}
 
-	public void printlnLime(Object o) {
+	public static void printlnLime(Object o) {
 		printlnColor(o, GREEN_BRIGHT);
 	}
 
-	public void print(Object o) {
+	public static void print(Object o) {
 		printColor(o, WHITE);
 	}
 
-	public void println(Object o) {
+	public static void println(Object o) {
 		printlnColor(o, WHITE);
 	}
 
-	public void printColor(Object o, String color) {
-		if (colorful) {
+	public static void printColor(Object o, String color) {
+		if (COLORFUL) {
 			System.out.print(color + o + RESET);
 		} else {
 			System.out.print(o);
 		}
 	}
 
-	public void printlnColor(Object o, String color) {
+	public static void printlnColor(Object o, String color) {
 		printColor(o + "\n", color);
-	}
-
-	public static class ConsoleBuilder {
-		private boolean colorful;
-
-		public ConsoleBuilder colorful(boolean colorful) {
-			this.colorful = colorful;
-			return this;
-		}
-
-		public Console build() {
-			return new Console(this);
-		}
 	}
 }
